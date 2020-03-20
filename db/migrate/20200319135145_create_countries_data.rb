@@ -1,4 +1,4 @@
-class CountriesData < ActiveRecord::Migration[6.0]
+class CreateCountriesData < ActiveRecord::Migration[6.0]
   def change
     create_table :countries_data do |t|
       t.string  :country_or_other

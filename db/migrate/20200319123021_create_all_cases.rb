@@ -1,4 +1,4 @@
-class AllCases < ActiveRecord::Migration[6.0]
+class CreateAllCases < ActiveRecord::Migration[6.0]
   def change
     create_table :all_cases do |t|
       t.integer  :total_cases

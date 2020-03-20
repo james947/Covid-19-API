@@ -1,4 +1,4 @@
-class ActiveCases < ActiveRecord::Migration[6.0]
+class CreateActiveCases < ActiveRecord::Migration[6.0]
   def change
     create_table :active_cases do |t|
       t.integer  :currently_infected_patients

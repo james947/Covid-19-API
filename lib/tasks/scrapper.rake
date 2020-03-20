@@ -5,6 +5,7 @@ require_relative '../../app/models/countries_data'
 
 desc "Scraps all corona virus data"
 task :scrap_data do
+    print('starting.....')
     class Scrapper
         require 'Nokogiri'
         require 'open-uri'
@@ -73,4 +74,5 @@ task :scrap_data do
         Scrapper.get_closed_cases
         Scrapper.get_countries_data
     end
+    print('done...')
 end

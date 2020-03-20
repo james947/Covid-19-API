@@ -68,9 +68,9 @@ task :scrap_data do
         end
     
         Scrapper = Scrapper.new
-        cases = Scrapper.get_cases
-        active_cases = Scrapper.get_active_cases
-        closed_cases = Scrapper.get_closed_cases
-        countries_data = Scrapper.get_countries_data
+        Scrapper.get_cases
+        Scrapper.get_active_cases
+        Scrapper.get_closed_cases
+        Scrapper.get_countries_data
     end
 end

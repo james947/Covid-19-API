@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
         content_type :json 
     end
 
-    get '/all_cases' do
+    get '/' do
         all_cases = AllCases.all
         { data: all_cases }.to_json
     end

@@ -1,4 +1,4 @@
-require 'Nokogiri'
+require 'nokogiri'
 require 'open-uri'
 require_relative '../../app/models/all_cases'
 require_relative '../../app/models/active_cases'
@@ -13,7 +13,7 @@ task :scrap_data do
 
         def initialize
             @parse_page ||= 
-            ::Nokogiri::HTML.parse(
+            Nokogiri::HTML.parse(
                 open(
                     'https://www.worldometers.info/coronavirus/'
                     )

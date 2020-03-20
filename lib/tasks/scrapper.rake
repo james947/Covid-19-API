@@ -1,3 +1,5 @@
+require 'Nokogiri'
+require 'open-uri'
 require_relative '../../app/models/all_cases'
 require_relative '../../app/models/active_cases'
 require_relative '../../app/models/closed_cases'
@@ -7,9 +9,6 @@ desc "Scraps all corona virus data"
 task :scrap_data do
     print('starting.....')
     class Scrapper
-        require 'Nokogiri'
-        require 'open-uri'
-
         attr_accessor :parse_page
 
         def initialize

@@ -10,3 +10,5 @@ gem "pry"
 gem "rerun"
 gem 'whenever', require: false
 gem "foreman"
+gem "sidekiq"
+gem "sidekiq-scheduler"

@@ -7,17 +7,17 @@ class ApplicationController < Sinatra::Base
     end
 
     get '/' do
-        all_cases = AllCases.all
+        all_cases = AllCases.where('latest IS true')
         { data: all_cases }.to_json
     end
 
     get '/active_cases' do
-        active_cases = ActiveCases.all
+        active_cases = ActiveCases.where('latest IS true')
         { data: active_cases }.to_json
     end
 
     get '/closed_cases' do
-        closed_cases = ClosedCases.all
+        closed_cases = ClosedCases.where('latest IS true')
         { data: closed_cases }.to_json
     end
 

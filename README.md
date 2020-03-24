@@ -12,7 +12,7 @@ create database `rake db:create`
 
 run migrations  `rake db:migrate`
 
-scrap data `rake scrap_data` This should print a message `scrapping the web` and when done
+scrap data `rake scrap_data` This should print a message `scrapping the web` and when done `We are done...`
 
 start the application `rackup`
 

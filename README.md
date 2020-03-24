@@ -21,6 +21,7 @@ Contributions are allowed! No guide for now. Just raise a PR!
 Acknowledgements
 ---
 Jay947 `Author`
+
 [Gideon Kimutai](www.github.com/gr1d99)
 
 

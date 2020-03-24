@@ -2,6 +2,23 @@ COVID-19 API
 ---
 This is an Application the crawls live data from https://www.worldometers.info/coronavirus/ and provides the data as a JSON API
 
+Installation
+---
+Clone the app  `git clone https://github.com/james947/Covid-19-API.git`
+
+Install gems `bundle install`
+
+create database `rake db:create`
+
+run migrations  `rake db:migrate`
+
+scrap data `rake scrap_data` This should print a message `scrapping the web` and when done
+
+start the application `rackup`
+
+Voila! Use the endpoints `below` to check if you have the lastest Covid-19 data.
+
+
 Endpoints
 ---
 [All Cases](https://coronalivedata.herokuapp.com/api/v1/all_cases) Returns all cases + Deaths + Recovered
@@ -21,6 +38,7 @@ Contributions are allowed! No guide for now. Just raise a PR!
 Acknowledgements
 ---
 Jay947 `Author`
+
 [Gideon Kimutai](www.github.com/gr1d99)
 
 

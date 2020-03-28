@@ -1,9 +1,11 @@
+require 'sinatra/base'
+
 class ApplicationController < Sinatra::Base
     require 'json'
     require 'pry'
 
     before do
-        content_type :json 
+        content_type :json
     end
 
     get '/api/v1/all_cases' do
@@ -21,13 +23,12 @@ class ApplicationController < Sinatra::Base
         { data: closed_cases }.to_json
     end
 
-    get '/api/v1/countries_data' do  
+    get '/api/v1/countries_data' do
         if params[:country]
             countries_data = CountriesData.country(params[:country].capitalize).where('latest IS true')
         else
             countries_data=CountriesData.where('latest IS true')
         end
         { data: countries_data }.to_json
-    end  
+    end
 end
-  

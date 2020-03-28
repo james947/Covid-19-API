@@ -18,8 +18,22 @@ start the application `rackup`
 
 Voila! Use the endpoints `below` to check if you have the lastest Covid-19 data.
 
+Development Environment Endpoints
+---
+curl 'http://127.0.0.1:9292/api/v1/all_cases'
 
-Endpoints
+curl 'http://127.0.0.1:9292/api/v1/active_cases'
+
+curl 'http://127.0.0.1:9292/api/v1/closed_cases'
+
+curl 'http://127.0.0.1:9292/api/v1/countries_data'
+
+curl 'http://127.0.0.1:9292/api/v1/contries_data?country='''
+
+
+
+
+Heroku Endpoints
 ---
 [All Cases](https://coronalivedata.herokuapp.com/api/v1/all_cases) Returns all cases + Deaths + Recovered
 

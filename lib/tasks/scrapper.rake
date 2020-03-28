@@ -12,14 +12,14 @@ task :scrap_data do
         attr_accessor :parse_page
 
         def initialize
-            @parse_page ||= 
+            @parse_page ||=
             Nokogiri::HTML.parse(
                 open(
                     'https://www.worldometers.info/coronavirus/'
                     )
                 )
         end
-    
+
         # this method should return all total cases + deaths + recovered
         def get_cases
             AllCases.where('latest IS true').find_each(batch_size:1000) do |batch|
@@ -30,7 +30,7 @@ task :scrap_data do
             total_cases_deaths_recovered = total_cases_array.map{ |arr| arr.css('span').text.strip.tr(",","") }
             AllCases.create(total_cases: total_cases_deaths_recovered[0], total_deaths:total_cases_deaths_recovered[1], total_recovered: total_cases_deaths_recovered[2], latest:true)
         end
-    
+
         #returns all active cases of infected patients + mild condition + serious or critical
         def get_active_cases
             ActiveCases.where('latest IS true').find_each(batch_size:1000) do |batch|
@@ -40,7 +40,7 @@ task :scrap_data do
            patients_in_mild_and_critical_condition= parse_page.css('.panel_front').first.css('.number-table').map{|div| div.content.strip.tr(",","")}
            ActiveCases.create(currently_infected_patients: currently_infected_patients, mild_condition: patients_in_mild_and_critical_condition[0], serious_or_critical_condition: patients_in_mild_and_critical_condition[1], latest:true)
         end
-    
+
         def get_closed_cases
             ClosedCases.where('latest IS true').find_each(batch_size:1000) do |batch|
                 batch.update(latest:false)
@@ -60,22 +60,24 @@ task :scrap_data do
                     arr.push(tdata.text.strip.tr(",", ""))
                 end
             end
-            arr.each_slice(9) do |val|
-
+            p arr
+            arr.each_slice(11) do |val|
                 CountriesData.create(
                     country_or_other: val[0],
                     total_cases:val[1],
                     new_cases:val[2],
-                    total_deaths:val[3], 
+                    total_deaths:val[3],
                     new_deaths:val[4], total_recovered:val[5],
                     active_cases:val[6],
                     serious_or_critical:val[7],
                     total_cases_1m_pop:val[8],
+                    total_deaths_1m_pop:val[9],
+                    first_case:val[10],
                     latest: true
                 )
             end
         end
-    
+
         Scrapper = Scrapper.new
         Scrapper.get_cases
         Scrapper.get_active_cases

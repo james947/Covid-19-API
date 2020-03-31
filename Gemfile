@@ -13,3 +13,9 @@ gem "foreman"
 gem "sidekiq"
 gem "sidekiq-scheduler"
 gem "rack-console"
+
+group :test do
+  gem 'rack-test'
+  gem 'rspec'
+  gem 'shoulda-matchers'
+end

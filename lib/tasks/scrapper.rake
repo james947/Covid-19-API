@@ -55,13 +55,16 @@ task :scrap_data do
                 batch.update(latest:false)
             end
             arr = []
-            parse_page.css('#main_table_countries_today tbody').each do |tr|
+
+            parse_page.css('#main_table_countries_today > tbody').each do |tr|
+                tr.css('.total_row_world').remove
+                tr.css('.total_row').remove
                 tr.css('td').each do |tdata|
                     arr.push(tdata.text.strip.tr(",", ""))
                 end
             end
-            p arr
-            arr.each_slice(11) do |val|
+            # arr.each_slice(13){|arr| p arr}
+            arr.each_slice(13) do |val|
                 CountriesData.create(
                     country_or_other: val[0],
                     total_cases:val[1],
@@ -72,12 +75,13 @@ task :scrap_data do
                     serious_or_critical:val[7],
                     total_cases_1m_pop:val[8],
                     total_deaths_1m_pop:val[9],
-                    first_case:val[10],
+                    total_tests:val[10],
+                    tests_1m_pop:val[11],
+                    continent:val[12],
                     latest: true
                 )
             end
         end
-
         Scrapper = Scrapper.new
         Scrapper.get_cases
         Scrapper.get_active_cases
@@ -86,3 +90,4 @@ task :scrap_data do
     end
     print('We are done...')
 end
+

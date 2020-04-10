@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_28_133552) do
+ActiveRecord::Schema.define(version: 2020_04_10_203649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,9 @@ ActiveRecord::Schema.define(version: 2020_03_28_133552) do
     t.boolean "latest", default: false
     t.integer "total_deaths_1m_pop"
     t.string "first_case"
+    t.integer "total_tests"
+    t.integer "tests_1m_pop"
+    t.string "continent"
   end
 
 end

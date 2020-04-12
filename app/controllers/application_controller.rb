@@ -8,19 +8,23 @@ class ApplicationController < Sinatra::Base
         content_type :json
     end
 
+    get '/' do
+
+    end
+
     get '/api/v1/all_cases' do
         all_cases = AllCases.where('latest IS true')
-        { data: all_cases }.to_json
+        all_cases.to_json
     end
 
     get '/api/v1/active_cases' do
         active_cases = ActiveCases.where('latest IS true')
-        { data: active_cases }.to_json
+        active_cases.to_json
     end
 
     get '/api/v1/closed_cases' do
         closed_cases = ClosedCases.where('latest IS true')
-        { data: closed_cases }.to_json
+        closed_cases.to_json
     end
 
     get '/api/v1/countries' do
@@ -29,6 +33,6 @@ class ApplicationController < Sinatra::Base
         else
             countries_data=CountriesData.where('latest IS true')
         end
-        { data: countries_data }.to_json
+         countries_data.to_json
     end
 end

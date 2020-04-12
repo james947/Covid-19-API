@@ -23,7 +23,7 @@ class ApplicationController < Sinatra::Base
         { data: closed_cases }.to_json
     end
 
-    get '/api/v1/countries_data' do
+    get '/api/v1/countries' do
         if params[:country]
             countries_data = CountriesData.country(params[:country].capitalize).where('latest IS true')
         else
